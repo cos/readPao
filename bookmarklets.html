@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Read Pao</title>
+        <style type="text/css">
+            #bookmarkletContainer {
+                display: none;
+            } #message {
+                display: none;
+            } .messageGood {
+                color: green;
+            } .messageBad {
+                color: red;
+            }
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js">
+        </script>
+        <script type="text/javascript">
+            readPaoSaveUrl = "http://localhost/readpao/lib.js"
+            bookmarkletTemplate = "javascript: (function(){readPao_list = '%listName%';readpaoScript = document.createElement('script');readpaoScript.type = 'text/javascript';readpaoScript.src = '" + readPaoSaveUrl + "?x=' + (Math.random());document.getElementsByTagName('head')[0].appendChild(readpaoScript);})();"
+            
+            var listRe = new RegExp("^[a-zA-Z0-9]*$")
+			
+			function clearMessage(){
+				$("#message").hide().removeClass('messageGood').removeClass('messageBad').html("")
+			}
+            $(document).ready(function(){
+                
+				
+				$("#list").keyup(function(){
+                    listValue = $(this).attr('value')
+                    
+                    clearMessage()
+                    if (listRe.test(listValue) && listValue != '') {
+                        $("#message").show().addClass("messageGood").html("List name is great!")
+                    }
+                    else {
+                        $("#message").show().addClass("messageBad").html("List name is not good! (Only letters and numbers)")
+                    }
+                    
+                })
+                $("#list").blur(function(){
+                    listValue = $(this).attr('value')
+                    
+                    if (listRe.test(listValue) && listValue != '') {
+                    
+                        clearMessage()
+                        bookmarklet = bookmarkletTemplate.replace("%listName%", listValue)
+                		
+						$("#message").show().addClass("messageGood").html("Just drag the link to your bookmarks toolbar")        
+						$('#bookmarkletContainer').show();
+						$('#bookmarklet').attr('href',bookmarklet)
+						
+                    }
+                })
+            });
+        </script>
+    </head>
+    <body>
+        <h1>readPao</h1>
+        <h2>take-out reading</h2>
+        <form action="#" method="post">
+            <label for="list">
+                list
+            </label>
+            <input type="text" id="list" name="list"/>
+            <div id="message">
+            </div>
+        </form>
+        <div id="bookmarkletContainer">
+            <a href="#" id="bookmarklet">readPao</a>
+        </div>
+    </body>
+</html>
