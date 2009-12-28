@@ -1,1 +1,15 @@
-/* General css styles */
+#bookmarkletContainer {
+    display: none;
+}
+
+#message {
+    display: none;
+}
+
+.messageGood {
+    color: green;
+}
+
+.messageBad {
+    color: red;
+}
