@@ -1,4 +1,4 @@
-REATE TABLE `list_items` (
+CREATE TABLE `list_items` (
  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'primary key',
  `list_name` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'name of the list',
  `url` text COLLATE utf8_bin NOT NULL COMMENT 'url of the page',
