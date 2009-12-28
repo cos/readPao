@@ -26,9 +26,16 @@
 			}
             $(document).ready(function(){
                 
+
 				
+				$("#list").keypress(function(event){
+					if (event.keyCode == 13){ // daca s-a apasat enter sa nu face submit
+						return false;
+					}
+				})
+
 				$("#list").keyup(function(){
-                    listValue = $(this).attr('value')
+                   	 listValue = $(this).attr('value')
                     
                     clearMessage()
                     if (listRe.test(listValue) && listValue != '') {
@@ -54,6 +61,8 @@
                     }
                 })
             });
+        
+                    
         </script>
     </head>
     <body>
