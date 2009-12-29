@@ -13,3 +13,26 @@
 .messageBad {
     color: red;
 }
+
+div.logo {
+	text-align:center;
+}
+img.logo {
+	width: 300px;
+}
+
+div.left {
+	float: left;
+	width: 42%;
+	padding: 10px;
+}
+
+div.left p {
+	padding: 10px;
+}
+div.right {
+	float: left;
+	width: 50%;
+	padding: 10px;
+	border-left: 2px solid black;
+}
