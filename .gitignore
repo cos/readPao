@@ -2,3 +2,5 @@
 .tmp_*
 *.pyc
 .pydevproject
+readpao.config.conf
+readpao.config.global.conf

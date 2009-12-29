@@ -6,7 +6,7 @@ from readpao.api_controller import APIController
 from storm.locals import *
 
 def initialize(thread_index):
-    cherrypy.thread_data.templates = TemplateLookup(directories=["views"])
+    cherrypy.thread_data.templates = TemplateLookup(directories=["views"], output_encoding='utf-8')
     database = create_database("mysql://readpao:paoread123@localhost:/readpao")
     store = Store(database)
     cherrypy.thread_data.db_store = store
