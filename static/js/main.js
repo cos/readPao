@@ -14,6 +14,7 @@ $(document).ready(function(){
 
 
 
+
     $("#list").keypress(function(event){
         if (event.keyCode == 13) { // daca s-a apasat enter sa nu face submit
             return false;
@@ -26,32 +27,29 @@ $(document).ready(function(){
         clearMessage()
         if (listRe.test(listValue) && listValue != '') {
             $("#message").show().addClass("messageGood").html("List name is great!")
+
+            bookmarklet = bookmarkletTemplate.replace("%listName%", listValue)
+            
+            $('#bookmarkletContainer').show();
+            $('#bookmarklet').attr('href', bookmarklet)
+
         }
         else {
+	        clearMessage()
+
             $("#message").show().addClass("messageBad").html("List name is not good! (Only letters and numbers)")
+	        $('#bookmarkletContainer').hide();
+	        $('#bookmarklet').attr('href', '#')
+
         }
         
     })
     
     $("#list").focus(function(){
         clearMessage()
-        $('#bookmarkletContainer').hide();
-        $('#bookmarklet').attr('href', '#')
+        //$('#bookmarkletContainer').hide();
+        //$('#bookmarklet').attr('href', '#')
         
     })
     
-    $("#list").blur(function(){
-        listValue = $(this).attr('value')
-        
-        if (listRe.test(listValue) && listValue != '') {
-        
-            clearMessage()
-            bookmarklet = bookmarkletTemplate.replace("%listName%", listValue)
-            
-            $("#message").show().addClass("messageGood").html("Just drag the link to your bookmarks toolbar")
-            $('#bookmarkletContainer').show();
-            $('#bookmarklet').attr('href', bookmarklet)
-            
-        }
-    })
 });

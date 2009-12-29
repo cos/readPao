@@ -1,10 +1,7 @@
-html{
-	font: sans-serif, Verdana;
-	
-}
 
 #bookmarkletContainer {
     display: none;
+	margin-top:0.5em;
 }
 
 #message {
@@ -40,4 +37,28 @@ div.right {
 	width: 50%;
 	padding: 10px;
 	border-left: 2px solid black;
+	clear:right;
+}
+h2{
+	margin:0.7em 0em;
+}
+
+h3{
+	margin:0.7em 0em;
+}
+h4{
+	margin:0.7em 0em;
+}
+#footer{
+	width:100%;
+	text-align:center;
+	margin-top:20px;
+}
+#footer a{
+	margin-right:160px;
+
+}
+#footer div{
+	margin-right:160px;
+	font-size:12px;
 }
