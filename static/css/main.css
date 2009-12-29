@@ -1,3 +1,8 @@
+html{
+	font: sans-serif, Verdana;
+	
+}
+
 #bookmarkletContainer {
     display: none;
 }

@@ -16,7 +16,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from xml.sax.saxutils import escape
 
-import urllib, re, os, urlparse
+import urllib,urllib2, re, os, urlparse
 import HTMLParser, feedparser
 from BeautifulSoup import BeautifulSoup
 from pprint import pprint
@@ -32,8 +32,21 @@ PUNCTUATION = re.compile("""[!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~]""")
 
 def myGrabContent(url):
     """ Returns a tuple of (link,link_title,link_contents,soup). Link contents are stripped to only useful content """
+    '''
     opened_url = urllib.urlopen(url)
     url_contents = opened_url.read()
+    '''
+    
+    
+    user_agent='Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.15) Gecko/20080623 Firefox/2.0.0.15'
+    http_accept="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    request = urllib2.Request(url)
+    request.add_header('User-Agent',user_agent)
+    request.add_header('Accept',http_accept)
+    request.add_header('Accept-Language','en-us,en;q=0.5')
+    opener = urllib2.build_opener()   
+    url_contents = opener.open(request).read()
+    
     return grabContent(url, url_contents)
     
 
