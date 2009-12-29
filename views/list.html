@@ -1,5 +1,12 @@
-<h1>aaaa</h1>
+<h1 style="font-size:1.3em; margin:0px 0px 0px 8px; padding:0px 0px 0px 8px; border-bottom: 1px solid #000000;">${list_name}</h1>
+<table>
 % for item in list_items:
-<br/>${item.url}
+	<tr>
+		<td style="padding: 0 5px; text-align: right; ">${item.time_to_read}m</td>
+		<td style="padding: 0 5px;">
+			<a href="/read/${item.id}" style="color: #000055; text-decoration: none;">${item.title}</a>
+		</td>
+	</tr>
 % endfor
+</table>
 
