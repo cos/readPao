@@ -4,3 +4,5 @@
 .pydevproject
 readpao.config.conf
 readpao.config.global.conf
+settings.py
+site.log

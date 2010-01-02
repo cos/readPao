@@ -4,10 +4,11 @@ from mako.lookup import TemplateLookup
 from readpao.index_controller import IndexController
 from readpao.api_controller import APIController
 from storm.locals import *
+import settings
 
 def initialize(thread_index):
     cherrypy.thread_data.templates = TemplateLookup(directories=["views"], output_encoding='utf-8')
-    database = create_database("mysql://readpao:paoread123@localhost:/readpao")
+    database = create_database("mysql://"+settings.db_user+":"+settings.db_password+"@localhost:/"+settings.db_database)
     store = Store(database)
     cherrypy.thread_data.db_store = store
 
