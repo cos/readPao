@@ -19,7 +19,7 @@ class APIController(object):
         new_item.title = link_title
         new_item.time_to_read = round(len(soup_content.split(" "))/200.0)
         # TODO: Here we add any other attributes
-        store = cherrypy.thread_data.db_store
+        store = cherrypy.request.dbstore
         store.add(new_item)
         store.commit()
         return cherrypy.thread_data.templates.get_template("api_save_response.js").render(list_item=new_item) 
